@@ -1,14 +1,19 @@
 package bank;
 
 public class BankAccount {
-
+    private final long id;
     private long money;
     private final Object lock = new Object();
 
-    public BankAccount(long amount) {
+    public Object getLock() {
+        return lock;
+    }
+
+    public BankAccount(long id, long amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("Amount should be not negative");
         }
+        this.id = id;
         this.money = amount;
     }
 
@@ -39,4 +44,7 @@ public class BankAccount {
         }
     }
 
+    public long getId() {
+        return id;
+    }
 }
